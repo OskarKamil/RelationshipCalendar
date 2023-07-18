@@ -1,0 +1,2 @@
+when persons do not exist, data should be read from default file instead of empty file
+add person/relationship to the menu, now they are only in toolbar but should be added to the menu too
