@@ -41,7 +41,7 @@ import javax.swing.UnsupportedLookAndFeelException;
 
 public class StartWindow implements Runnable {
 	public static final String VERSION = "0.010";
-	public static final String NAME = "Relationship Calendar GP";
+	public static final String NAME = "Birthday Organiser GP";
 	public static final ImageIcon ICON = new ImageIcon("src/resources/small icon.png");
 	public static final ImageIcon SAVE_ICON = new ImageIcon("src/resources/save2.png");
 	public static final ImageIcon EXIT_ICON = new ImageIcon("src/resources/exit2.png");
@@ -51,7 +51,9 @@ public class StartWindow implements Runnable {
 	public static final ImageIcon OFF_ICON = new ImageIcon("src/resources/off2.png");
 	public static final ImageIcon ADD_PERSON = new ImageIcon("src/resources/addPerson2.png");
 	public static final ImageIcon ADD_RELATIONSHIP = new ImageIcon("src/resources/addRelationship2.png");
-	public static final ImageIcon DELETE = new ImageIcon("src/resources/delete2.png");
+	public static final ImageIcon DELETE_ICON = new ImageIcon("src/resources/delete2.png");
+	public static final File PREFERENCES_FILE = new File("src/resources/pref.txt");
+	public static final File PERSONS_FILE = new File("src/resources/persons.txt");
 	public static ArrayList<Person> persons = new ArrayList<Person>();
 	public static JPanel mainPanel;
 
@@ -118,10 +120,9 @@ public class StartWindow implements Runnable {
 	private void writePreferences() {
 
 		PrintWriter fileOut = null;
-		File source = new File("src/resources/pref.txt");
 
 		try {
-			fileOut = new PrintWriter(new FileOutputStream(source), false);
+			fileOut = new PrintWriter(new FileOutputStream(PREFERENCES_FILE), false);
 
 			System.out.println("Read successfully");
 
@@ -131,7 +132,7 @@ public class StartWindow implements Runnable {
 		} catch (FileNotFoundException e) {
 			System.err.println("No file found. Creating default file.");
 			try {
-				source.createNewFile();
+				PREFERENCES_FILE.createNewFile();
 
 			} catch (IOException e1) {
 				System.err.println("Could not create. Closing the program.");
@@ -146,18 +147,17 @@ public class StartWindow implements Runnable {
 
 	private void readPreferences() {
 		Scanner fileIn = null;
-		File source = new File("src/resources/pref.txt");
 
-		if (!(source.exists()))
+		if (!(PREFERENCES_FILE.exists()))
 			try {
-				source.createNewFile();
+				PREFERENCES_FILE.createNewFile();
 				System.out.println("Created new file.");
 			} catch (IOException e2) {
 				System.err.println("Could not create data file.");
 			}
 
 		try {
-			fileIn = new Scanner(new FileInputStream(source));
+			fileIn = new Scanner(new FileInputStream(PREFERENCES_FILE));
 			System.out.println("Read successfully");
 			if (fileIn.hasNextLine()) {
 				autoSave = Short.parseShort(fileIn.nextLine());
@@ -174,18 +174,17 @@ public class StartWindow implements Runnable {
 	private void readData() {
 
 		Scanner fileIn = null;
-		File source = new File("src/resources/persons.txt");
 
-		if (!(source.exists()))
+		if (!(PERSONS_FILE.exists()))
 			try {
-				source.createNewFile();
+				PERSONS_FILE.createNewFile();
 				System.out.println("Created new file.");
 			} catch (IOException e2) {
 				System.err.println("Could not create data file.");
 			}
 
 		try {
-			fileIn = new Scanner(new FileInputStream(source));
+			fileIn = new Scanner(new FileInputStream(PERSONS_FILE));
 			System.out.println("Read successfully");
 
 			do {
@@ -232,10 +231,9 @@ public class StartWindow implements Runnable {
 	private void writeData() {
 
 		PrintWriter fileOut = null;
-		File source = new File("src/resources/persons.txt");
 
 		try {
-			fileOut = new PrintWriter(new FileOutputStream(source), false);
+			fileOut = new PrintWriter(new FileOutputStream(PERSONS_FILE), false);
 
 			System.out.println("Read successfully");
 
@@ -250,7 +248,7 @@ public class StartWindow implements Runnable {
 		} catch (FileNotFoundException e) {
 			System.err.println("No file found. Creating default file.");
 			try {
-				source.createNewFile();
+				PERSONS_FILE.createNewFile();
 
 			} catch (IOException e1) {
 				System.err.println("Could not create. Closing the program.");
@@ -454,7 +452,7 @@ public class StartWindow implements Runnable {
 
 		aboutWindow.setIconImage(ICON.getImage());
 
-		String text = "<html>" + NAME + "<br>© 2021 Oskar Jargilo" + "<br>Email: *coming soon*" + "<br><br>Version: "
+		String text = "<html>" + NAME + "<br>© 2023 Oskar Jargilo" + "<br>Email: *coming soon*" + "<br><br>Version: "
 				+ VERSION + "</html>";
 
 		JLabel label = new JLabel(text);
