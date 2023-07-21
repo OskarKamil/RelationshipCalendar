@@ -20,7 +20,7 @@ import javax.swing.border.TitledBorder;
 
 public class MiniCalendar implements Runnable, ActionListener {
 
-	public static final ImageIcon MINI_ICON = new ImageIcon("src/resources/calendar2.png");
+	public static final ImageIcon SMALL_CALENDAR_ICON = new ImageIcon(IconManager.SMALL_CALENDAR_ICON);
 	private int day;
 	private int month;
 	private int year;
@@ -51,7 +51,7 @@ public class MiniCalendar implements Runnable, ActionListener {
 		miniCalendar.setSize(300, 300);
 		miniCalendar.setResizable(false);
 		miniCalendar.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		miniCalendar.setIconImage(MINI_ICON.getImage());
+		miniCalendar.setIconImage(SMALL_CALENDAR_ICON.getImage());
 		miniCalendar.setModal(true);
 		day = 0;
 		month = 0;
