@@ -42,18 +42,18 @@ import javax.swing.UnsupportedLookAndFeelException;
 public class StartWindow implements Runnable {
 	public static final String VERSION = "0.010";
 	public static final String NAME = "Birthday Organiser GP";
-	public static final ImageIcon ICON = new ImageIcon("src/resources/small icon.png");
-	public static final ImageIcon SAVE_ICON = new ImageIcon("src/resources/save2.png");
-	public static final ImageIcon EXIT_ICON = new ImageIcon("src/resources/exit2.png");
-	public static final ImageIcon CLEAR_ICON = new ImageIcon("src/resources/clear2.png");
-	public static final ImageIcon ABOUT_ICON = new ImageIcon("src/resources/about2.png");
-	public static final ImageIcon ON_ICON = new ImageIcon("src/resources/on2.png");
-	public static final ImageIcon OFF_ICON = new ImageIcon("src/resources/off2.png");
-	public static final ImageIcon ADD_PERSON = new ImageIcon("src/resources/addPerson2.png");
-	public static final ImageIcon ADD_RELATIONSHIP = new ImageIcon("src/resources/addRelationship2.png");
-	public static final ImageIcon DELETE_ICON = new ImageIcon("src/resources/delete2.png");
-	public static final File PREFERENCES_FILE = new File("src/resources/pref.txt");
-	public static final File PERSONS_FILE = new File("src/resources/persons.txt");
+	public static final ImageIcon PROGRAM_ICON = new ImageIcon(IconManager.PROGRAM_ICON);
+	public static final ImageIcon SAVE_ICON = new ImageIcon(IconManager.SAVE_ICON);
+	public static final ImageIcon EXIT_ICON = new ImageIcon(IconManager.EXIT_ICON);
+	public static final ImageIcon CLEAR_ICON = new ImageIcon(IconManager.CLEAR_ICON);
+	public static final ImageIcon ABOUT_ICON = new ImageIcon(IconManager.ABOUT_ICON);
+	public static final ImageIcon ON_ICON = new ImageIcon(IconManager.ON_ICON);
+	public static final ImageIcon OFF_ICON = new ImageIcon(IconManager.OFF_ICON);
+	public static final ImageIcon ADD_PERSON = new ImageIcon(IconManager.ADD_PERSON);
+	public static final ImageIcon ADD_RELATIONSHIP = new ImageIcon(IconManager.ADD_RELATIONSHIP_ICON);
+	public static final ImageIcon DELETE_ICON = new ImageIcon(IconManager.DELETE_ICON);
+	public static final File PREFERENCES_FILE = new File(FileManager.PREFERENCES_FILE);
+	public static final File PERSONS_FILE = new File(FileManager.PERSONS_FILE);
 	public static ArrayList<Person> persons = new ArrayList<Person>();
 	public static JPanel mainPanel;
 
@@ -65,7 +65,7 @@ public class StartWindow implements Runnable {
 		startWindow.setSize(800, 300);
 		startWindow.setResizable(false);
 		startWindow.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-		startWindow.setIconImage(ICON.getImage());
+		startWindow.setIconImage(PROGRAM_ICON.getImage());
 		startWindow.addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent e) {
 				tryToExit(startWindow);
@@ -450,14 +450,14 @@ public class StartWindow implements Runnable {
 		aboutWindow.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 		aboutWindow.setModal(true);
 
-		aboutWindow.setIconImage(ICON.getImage());
+		aboutWindow.setIconImage(PROGRAM_ICON.getImage());
 
 		String text = "<html>" + NAME + "<br>© 2023 Oskar Jargilo" + "<br>Email: *coming soon*" + "<br><br>Version: "
 				+ VERSION + "</html>";
 
 		JLabel label = new JLabel(text);
 		label.setFont(new Font("Ebrima", Font.PLAIN, 14));
-		label.setIcon(ICON);
+		label.setIcon(PROGRAM_ICON);
 		label.setHorizontalTextPosition(JLabel.RIGHT);
 		label.setVerticalTextPosition(JLabel.TOP);
 		label.setIconTextGap(20);
